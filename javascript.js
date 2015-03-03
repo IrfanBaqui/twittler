@@ -2,6 +2,7 @@ $(document).ready(function(){
         var $body = $('body');
         //$body.html('');
 
+        var addTweets = function() {
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
@@ -16,13 +17,17 @@ $(document).ready(function(){
           $tweet_time.text(tweet.created_at);
 
           //$tweet.add('span');
-          $tweet.appendTo($('main'));
-          $tweet_time.appendTo($('main'))
+          $tweet.prependTo($('main'));
+          $tweet_time.prependTo($('main'))
           index -= 1;
         }
+        }
+
+        addTweets();
 
         $('.button').on('click', function(){
-          location.reload();
+          $('p').show();
+          addTweets();
         })
 
         $('#author').on('click', 'button', function(){
